@@ -1,0 +1,21 @@
+.notepad-container {
+  font-family: Inter, sans-serif;
+  max-width: 1456px;
+  height: auto;
+  border: 2px solid #D0D5DD;
+  border-radius: 16px;
+  padding: 24px 40px;
+  margin: 48px auto;
+
+  &__title {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    color: #344054;
+    margin-top: 4px;
+  }
+}
