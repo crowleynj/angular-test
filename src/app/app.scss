@@ -1,5 +1,5 @@
 .notepad-container {
-  font-family: Inter, sans-serif;
+  background: #FFFFFF;
   max-width: 1456px;
   height: auto;
   border: 2px solid #D0D5DD;
@@ -16,6 +16,18 @@
   &__subtitle {
     font-size: 18px;
     color: #344054;
-    margin-top: 4px;
+    margin-top: 16px;
+  }
+
+  &__add-button {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1570EF;
+    cursor: pointer;
+
+    mat-icon {
+      margin-right: 2px;
+      margin-bottom: -6px;
+    }
   }
 }

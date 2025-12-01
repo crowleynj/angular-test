@@ -3,6 +3,12 @@
   <p class="notepad-container__subtitle">Share your travel experiences and help us design better transportation systems for everyone.</p>
 
   <div class="notepad-container__questions" #questionsContainer>
-
+    @for(question of questions; track question) {
+      <app-question [questionNumber]="question"></app-question>
+    }
   </div>
+
+  <span class="notepad-container__add-button" (click)="addQuestion()">
+    <mat-icon fontIcon="add"></mat-icon>Add a question
+  </span>
 </div>

@@ -1,0 +1,22 @@
+<div class="question">
+  <div class="question__header">
+    <span class="question__header__number">Q{{questionNumber()}}</span>
+    <span class="question__header__type-selection">
+      <select>
+        <option value="single-choice" class="single">Single Choice </option>
+        <option value="multiple-choice"> Multiple Choice</option>
+      </select>
+    </span>
+  </div>
+  <div class="question__title">
+      <input matInput placeholder="Type your question and answers options here" />
+  </div>
+  <div class="question__options">
+      <textarea matInput cdkTextareaAutosize placeholder="- Option 1" #textArea
+                    (keyup)="addHyphenOnNewLine($event)" (click)="insertHyphenAtStart()"></textarea>
+  </div>
+  <div class="question__settings">
+    <mat-slide-toggle name="randomize" labelPosition="before">Randomize options</mat-slide-toggle>
+    <mat-slide-toggle name="required" labelPosition="before">Make Required</mat-slide-toggle>
+  </div>
+</div>
