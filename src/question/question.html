@@ -1,22 +1,32 @@
-<div class="question">
-  <div class="question__header">
-    <span class="question__header__number">Q{{questionNumber()}}</span>
-    <span class="question__header__type-selection">
-      <select>
-        <option value="single-choice" class="single">Single Choice </option>
-        <option value="multiple-choice"> Multiple Choice</option>
-      </select>
-    </span>
-  </div>
-  <div class="question__title">
-      <input matInput placeholder="Type your question and answers options here" />
-  </div>
-  <div class="question__options">
-      <textarea matInput cdkTextareaAutosize placeholder="- Option 1" #textArea
-                    (keyup)="addHyphenOnNewLine($event)" (click)="insertHyphenAtStart()"></textarea>
-  </div>
-  <div class="question__settings">
-    <mat-slide-toggle name="randomize" labelPosition="before">Randomize options</mat-slide-toggle>
-    <mat-slide-toggle name="required" labelPosition="before">Make Required</mat-slide-toggle>
-  </div>
-</div>
+<form [formGroup]="form">
+  @for(control of getQuestionFormControls(); track control; let i = $index) {
+    <div class="question">
+        <div formArrayName="questions">
+            <ng-container [formGroupName]="i">
+                <div class="question__header">
+                  <span class="question__header__number">
+                    Q{{questionNumber() ? questionNumber() : i + 1}}
+                  </span>
+                  <span class="question__header__type-selection">
+                    <select [formControlName]="'questionType'">
+                      <option value="0">Single Choice</option>
+                      <option value="1">Multiple Choice</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="question__title">
+                    <input matInput [formControlName]="'questionText'" placeholder="Type your question and answers options here" />
+                </div>
+                <div class="question__options">
+                    <textarea matInput cdkTextareaAutosize placeholder="- Option 1" #textArea
+                                  (keyup)="addHyphenOnNewLine($event)" (click)="insertHyphenAtStart()" [formControlName]="'options'"></textarea>
+                </div>
+                <div class="question__settings">
+                  <mat-slide-toggle name="randomize" [formControlName]="'randomizeOptionsInd'" labelPosition="before">Randomize options</mat-slide-toggle>
+                  <mat-slide-toggle name="required" [formControlName]="'mandatoryInd'" labelPosition="before">Make Required</mat-slide-toggle>
+                </div>
+            </ng-container>
+          </div>
+    </div>
+  }
+</form>

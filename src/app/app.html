@@ -1,14 +1,16 @@
-<div class="notepad-container">
-  <h1 class="notepad-container__title">Urban Mobility Trends and Preferences</h1>
-  <p class="notepad-container__subtitle">Share your travel experiences and help us design better transportation systems for everyone.</p>
+@if (survey && form) {
+  <div class="notepad-container">
+        <h1 class="notepad-container__title">{{ survey!.title }}</h1>
+        <p class="notepad-container__subtitle">{{ survey!.description}}</p>
 
-  <div class="notepad-container__questions" #questionsContainer>
-    @for(question of questions; track question) {
-      <app-question [questionNumber]="question"></app-question>
-    }
+        <div class="notepad-container__questions" #questionsContainer>
+          <form [formGroup]="form">
+            <app-question></app-question>
+          </form>
+        </div>
+
+        <span class="notepad-container__add-button" (click)="addQuestion()">
+          <mat-icon fontIcon="add"></mat-icon>Add a question
+        </span>
   </div>
-
-  <span class="notepad-container__add-button" (click)="addQuestion()">
-    <mat-icon fontIcon="add"></mat-icon>Add a question
-  </span>
-</div>
+}
