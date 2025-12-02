@@ -1,4 +1,4 @@
-import { Component, input, InputSignal, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, input, InputSignal, QueryList, ViewChildren, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule, MatInput } from '@angular/material/input';
@@ -23,7 +23,7 @@ import { FormGroup, FormArray, ReactiveFormsModule, FormGroupDirective } from '@
 export class QuestionComponent implements OnInit {
   question: InputSignal<Question | undefined> = input<Question>();
   questionNumber: InputSignal<number | undefined> = input<number>();
-  @ViewChild('textArea') textArea: ElementRef | undefined;
+  @ViewChildren('textArea') textAreas: QueryList<ElementRef> | undefined
   form!: FormGroup;
 
   constructor(private rootFormGroup: FormGroupDirective) {}
@@ -32,15 +32,15 @@ export class QuestionComponent implements OnInit {
     this.form = this.rootFormGroup.control;
   }
 
-  addHyphenOnNewLine(event: KeyboardEvent) {
+  addHyphenOnNewLine(event: KeyboardEvent, index: number) {
     if (event.key === 'Enter') {
-      this.textArea!.nativeElement.value = this.textArea!.nativeElement.value + '- ';
+      this.textAreas!.get(index)!.nativeElement.value = this.textAreas!.get(index)!.nativeElement.value + '- ';
     }
   }
 
-  insertHyphenAtStart(){
-    if(this.textArea!.nativeElement.value === '') {
-      this.textArea!.nativeElement.value = this.textArea!.nativeElement.value + '- ';
+  insertHyphenAtStart(index: number){
+    if(this.textAreas!.get(index)!.nativeElement.value === '') {
+      this.textAreas!.get(index)!.nativeElement.value = this.textAreas!.get(index)!.nativeElement.value + '- ';
     }
   }
 

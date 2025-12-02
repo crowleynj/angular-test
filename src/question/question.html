@@ -19,7 +19,7 @@
                 </div>
                 <div class="question__options">
                     <textarea matInput cdkTextareaAutosize placeholder="- Option 1" #textArea
-                                  (keyup)="addHyphenOnNewLine($event)" (click)="insertHyphenAtStart()" [formControlName]="'options'"></textarea>
+                                  (keyup)="addHyphenOnNewLine($event, i)" (click)="insertHyphenAtStart(i)" [formControlName]="'options'"></textarea>
                 </div>
                 <div class="question__settings">
                   <mat-slide-toggle name="randomize" [formControlName]="'randomizeOptionsInd'" labelPosition="before">Randomize options</mat-slide-toggle>

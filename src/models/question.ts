@@ -3,7 +3,7 @@ export interface Question {
   questionText: string,
   mandatoryInd: boolean,
   questionType: number,
-  options: string[],
+  options: string,
   randomizeOptionsInd: boolean,
   cards: string[],
   programmerNotes: string,
